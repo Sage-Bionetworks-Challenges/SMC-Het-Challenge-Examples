@@ -3,7 +3,7 @@
     <exit_code range="1:" />
   </stdio>
   <requirements>
-    <container type="docker">phylowgs</container>
+    <container type="docker">phylowgs:smchet1</container>
   </requirements>
   <command><![CDATA[
 
