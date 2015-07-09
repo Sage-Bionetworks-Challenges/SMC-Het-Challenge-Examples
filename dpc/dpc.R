@@ -226,14 +226,18 @@ getClusterAssignments <- function(GS.data, density.file, window.size = 20, burn.
 
 
 ##MAIN CODE BLOCK
-args<-commandArgs(TRUE)
-vcfdat = read.table(args[1],sep='\t',comment.char='#')
-#Allelic depths for the ref and alt alleles (AD), Approximate read depth (DP)
-tumour_stat = data.frame(do.call(rbind, strsplit(as.vector(vcfdat[,11]), split = ":", fixed = TRUE)))
-colnames(tumour_stat) = strsplit(as.vector(unique(vcfdat[,9])),':')[[1]]
-#get the number of mutant reads into mutReads and the total number of reads at each mutation into totalReads, then run the next line
-totalReads <- as.integer(as.vector(tumour_stat[,'DP']))
-mutReads.binomial <-  as.integer(unlist(lapply(strsplit(as.vector(tumour_stat[,'AD']),','),'[[',2)))
+#args<-commandArgs(TRUE)
+#vcfdat = read.table(args[1],sep='\t',comment.char='#')
+##Allelic depths for the ref and alt alleles (AD), Approximate read depth (DP)
+#tumour_stat = data.frame(do.call(rbind, strsplit(as.vector(vcfdat[,11]), split = ":", fixed = TRUE)))
+#colnames(tumour_stat) = strsplit(as.vector(unique(vcfdat[,9])),':')[[1]]
+##get the number of mutant reads into mutReads and the total number of reads at each mutation into totalReads, then run the next line
+#totalReads <- as.integer(as.vector(tumour_stat[,'DP']))
+#mutReads.binomial <-  as.integer(unlist(lapply(strsplit(as.vector(tumour_stat[,'AD']),','),'[[',2)))
+
+#simple demo
+totalReads <- c(rep(100,80) )
+mutReads.binomial <- c(rbinom(25,100,0.1), rbinom(30,100,0.5), rbinom(25,100,0.9))
 
 #Gibbs sampler
 GS.data.binomial<-subclone.dirichlet.gibbs(y=mutReads.binomial,N=totalReads)
@@ -246,7 +250,24 @@ Gibbs.subclone.density.est(GS.data.binomial,"DirichletProcessplotBinomial.png", 
 
 #cluster assignment
 cluster.assignment <- getClusterAssignments(GS.data.binomial, density.file = density.file, burn.in = burn.in)
-write.table(cbind(1:length(cluster.assignment$localOptima),cluster.assignment$localOptima),"clusterPositions.txt",quote=F,sep="\t",col.names=c("cluster_number","cluster_position"),row.names=F)
-write.table(cluster.assignment$most.likely.cluster,"clusterAssignments.txt",quote=F,sep="\t",col.names="cluster_number",row.names=F)
+#put outputs into required format
+#remove empty clusters
+occupied.clusters = sort(unique(cluster.assignment$most.likely.cluster))
+no.clusters = length(occupied.clusters)
+optima = cluster.assignment$localOptima[occupied.clusters]
+assignments = match(cluster.assignment$most.likely.cluster,occupied.clusters)
+cellularity = max(optima)
+no.muts = length(assignments)
+co.clustering = array(0,c(no.muts,no.muts))
+for(c in 1:no.clusters){
+	indices = which(assignments==c)
+	co.clustering[indices,indices] = 1
+}
+
+write.table(cellularity,"subchallenge1A.txt",row.names=F,col.names=F,quote=F)
+write.table(no.clusters,"subchallenge1B.txt",row.names=F,col.names=F,quote=F)
+write.table(cbind(1:no.clusters,table(assignments),optima),"subchallenge1C.txt",row.names=F,col.names=F,quote=F)
+write.table(assignments,"subchallenge2A.txt",row.names=F,col.names=F,quote=F)
+write.table(co.clustering,"subchallenge2B.txt",row.names=F,col.names=F,quote=F)
 
 #How to Run : Rscript DPC_demo.R '/dir/to/vcf.vcf'

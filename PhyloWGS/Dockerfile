@@ -20,6 +20,7 @@ RUN easy_install -U ete2
 
 WORKDIR /opt
 
-RUN git clone https://github.com/morrislab/phylowgs.git
+RUN git clone https://github.com/morrislab/smchet-challenge.git && cd smchet-challenge && git checkout v0.1.0
+RUN git clone https://github.com/morrislab/phylowgs.git && cd phylowgs && git checkout smchet1
 
 RUN cd phylowgs && g++ -o mh.o  mh.cpp  util.cpp `gsl-config --cflags --libs`
