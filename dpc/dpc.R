@@ -228,9 +228,11 @@ getClusterAssignments <- function(GS.data, density.file, window.size = 20, burn.
 #MAIN CODE BLOCK
 args<-commandArgs(TRUE)
 vcfdat = read.table(args[1],sep='\t',comment.char='#')
+datacol=as.integer(args[2]) + 9
+namecol=9
 #Allelic depths for the ref and alt alleles (AD), Approximate read depth (DP)
-tumour_stat = data.frame(do.call(rbind, strsplit(as.vector(vcfdat[,11]), split = ":", fixed = TRUE)))
-colnames(tumour_stat) = strsplit(as.vector(unique(vcfdat[,9])),':')[[1]]
+tumour_stat = data.frame(do.call(rbind, strsplit(as.vector(vcfdat[,datacol]), split = ":", fixed = TRUE)))
+colnames(tumour_stat) = strsplit(as.vector(unique(vcfdat[,namecol])),':')[[1]]
 #get the number of mutant reads into mutReads and the total number of reads at each mutation into totalReads, then run the next line
 totalReads <- as.integer(as.vector(tumour_stat[,'DP']))
 mutReads.binomial <-  as.integer(unlist(lapply(strsplit(as.vector(tumour_stat[,'AD']),','),'[[',2)))
@@ -270,4 +272,4 @@ write.table(cbind(1:no.clusters,table(assignments),optima),"subchallenge1C.txt",
 write.table(assignments,"subchallenge2A.txt",row.names=F,col.names=F,quote=F,sep="\t")
 write.table(co.clustering,"subchallenge2B.txt",row.names=F,col.names=F,quote=F,sep="\t")
 
-#How to Run : Rscript DPC_demo.R '/dir/to/vcf.vcf'
+#How to Run : Rscript DPC_demo.R '/dir/to/vcf.vcf' 'number_of_sample'

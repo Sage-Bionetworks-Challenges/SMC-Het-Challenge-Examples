@@ -4,11 +4,12 @@
 		<container type="docker">r-base</container>
 	</requirements>
 	<command interpreter="Rscript">
-dpc.R ${input_vcf}
+dpc.R ${input_vcf} ${sample_number}
 	</command>
 
 	<inputs>
 		<param format="vcf" name="input_vcf" type="data" label="VCF file" help="" />
+		<param type="integer" label="Sample number" help="The ith sample column in the VCF file" value="1"/>
 	</inputs>
 
 	<outputs>
