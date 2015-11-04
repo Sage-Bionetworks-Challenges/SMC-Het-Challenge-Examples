@@ -8,8 +8,7 @@
     <command><![CDATA[
 python /opt/phylowgs/evolve.py 
 -s ${MCMC_SAMPLES} -i ${MH_ITERATIONS} -r ${RANDOM_SEED}
--t ${OUTPUT_TREES} -k ${OUTPUT_TOP_K_TREES} -f ${OUTPUT_CLONAL_FREQS}
--l ${OUTPUT_LLH_TRACE}
+-k ${OUTPUT_TOP_K_TREES} -f ${OUTPUT_CLONAL_FREQS}
 ${ssm_file} ${cnv_file}
     ]]></command>
     <inputs>
@@ -20,10 +19,8 @@ ${ssm_file} ${cnv_file}
       <param name="RANDOM_SEED" type="integer" value="12345" label="Random seed for initializing MCMC sampler"/>
     </inputs>
     <outputs>
-      <data format="data" name="OUTPUT_TREES" label="Tree File"/>
       <data format="text" name="OUTPUT_TOP_K_TREES" label="Top K Trees"/>
       <data format="text" name="OUTPUT_CLONAL_FREQS" label="Clonal Frequencies"/>
-      <data format="text" name="OUTPUT_LLH_TRACE" label="LLHA Trace"/>
     </outputs>
     <help><![CDATA[
         TODO: Fill in help.

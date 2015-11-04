@@ -5,20 +5,28 @@
   <requirements>
     <container type="docker">phylowgs:smchet1</container>
   </requirements>
+#if str($battenberg) != 'None':
+  <command><![CDATA[
+python /opt/phylowgs/parser/parse_cnvs.py 
+--cnv-format battenberg
+--cellularity ${cellularity}
+--cnv-output cnvs.txt
+${battenberg}
+]]></command>
+#end if
   <command><![CDATA[
 python /opt/phylowgs/parser/create_phylowgs_inputs.py 
 #if $subsample.run == "yes":
 --sample-size ${subsample.count}
 #end if
-#if str($battenberg) != 'None':
---battenberg ${battenberg}
-#end if
 #if $only_normal_cn
 --only-normal-cn 
 #end if
+#if str($battenberg) != 'None':
+--cnvs cnvs.txt
+#end if
 --output-cnvs ${output_cnvs}
 --output-variants ${output_variants}
---cellularity ${cellularity}
 --variant-type ${input_type}
 --cnv-confidence ${cnv_confidence}
 --read-length ${read_length}
