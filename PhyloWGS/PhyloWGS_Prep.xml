@@ -8,7 +8,7 @@
 #if str($battenberg) != 'None':
   <command><![CDATA[
 python /opt/phylowgs/parser/parse_cnvs.py 
---cnv-format battenberg
+--cnv-format battenberg-smchet
 --cellularity ${cellularity}
 --cnv-output cnvs.txt
 ${battenberg}
