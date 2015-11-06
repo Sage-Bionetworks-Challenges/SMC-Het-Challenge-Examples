@@ -1,0 +1,29 @@
+<tool id="PhyloWGS_CNVs_Prep" name="PhyloWGS CNVs Prep" version="0.1.0">
+  <stdio>
+    <exit_code range="1:" />
+  </stdio>
+  <requirements>
+    <container type="docker">phylowgs:smchet1</container>
+  </requirements>
+  <command>
+  #if str($battenberg) != 'None':
+  <![CDATA[
+python /opt/phylowgs/parser/parse_cnvs.py 
+--cnv-format battenberg-smchet
+--cellularity ${cellularity}
+--cnv-output ${cnv_out}
+${battenberg}
+]]>
+#end if
+</command>
+  <inputs>
+        <param name="battenberg" type="data" format="tabular" optional="true" help="Battenberg-formatted list of CNVs"/>
+        <param name="cellularity" type="float" label="Cellularity" help="Fraction of sample that is cancerous rather than somatic" value="1.0"/>
+  </inputs>
+  <outputs>
+        <data format="tabular" name="cnv_out" label="Output destination for CNVs"/>
+  </outputs>
+  <help><![CDATA[
+      Extract CNVs from a battenberg file for input to PhyloWGS
+]]></help>
+</tool>
