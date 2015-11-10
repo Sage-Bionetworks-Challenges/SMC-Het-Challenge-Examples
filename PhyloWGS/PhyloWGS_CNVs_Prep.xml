@@ -21,7 +21,7 @@ ${battenberg}
         <param name="cellularity" type="float" label="Cellularity" help="Fraction of sample that is cancerous rather than somatic" value="1.0"/>
   </inputs>
   <outputs>
-        <data format="tabular" name="cnv_out" label="Output destination for CNVs"/>
+        <data format="tabular" name="cnv_out" label="CNVs for PhyloWGS Tool Input Prep"/>
   </outputs>
   <help><![CDATA[
       First tool to be executed when using the PhyloWGS example. 

@@ -44,8 +44,8 @@ ${vcf_file}
         <param name="vcf_file" type="data" format="vcf" help="Variant File"/>
   </inputs>
   <outputs>
-        <data format="tabular" name="output_cnvs" label="Output destination for CNVs"/>
-        <data format="tabular" name="output_variants" label="Output destination for variants"/>
+        <data format="tabular" name="output_cnvs" label="CNVs for PhyloWGS Tool"/>
+        <data format="tabular" name="output_variants" label="variants for PhyloWGS"/>
   </outputs>
   <help><![CDATA[
       * Second tool to be executed when using the PhyloWGS example. 

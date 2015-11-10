@@ -22,7 +22,7 @@ ${ssm_file} ${cnv_file}
     <outputs>
       <data format="text" name="OUTPUT_TOP_K_TREES" label="Top K Trees"/>
       <data format="text" name="OUTPUT_CLONAL_FREQS" label="Clonal Frequencies"/>
-      <data format="text" name="TREES" label="trees.zip" from_work_dir="trees.zip"/>
+      <data format="binary" name="TREES" label="trees.zip" from_work_dir="trees.zip"/>
     </outputs>
     <help><![CDATA[
       Third tool to be executed when using the PhyloWGS example. 
