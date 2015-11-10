@@ -1,4 +1,4 @@
-<tool id="PhyloWGS_Prep" name="PhyloWGS Prep" version="0.1.0">
+<tool id="PhyloWGS_Tool_Input_Prep" name="PhyloWGS Tool Input Prep" version="0.1.0">
   <stdio>
     <exit_code range="1:" />
   </stdio>
@@ -34,7 +34,6 @@ ${vcf_file}
         </conditional>
         <param name="cnvs" type="data" format="tabular" optional="false" help="CNVs extracted from Battenberg file using PhyloWGS CNVs Prep"/>
         <param name="only_normal_cn" type="boolean" label="Only report CN regions" help="Only output variants lying in normal CN regions. Do not output CNV data directly."/>
-        <param name="cellularity" type="float" label="Cellularity" help="Fraction of sample that is cancerous rather than somatic" value="1.0"/>
         <param name="input_type" value="Variant Input Type" type="select">
             <option value="mutect_smchet" selected="True">MuTect</option>
             <option value="sanger">Sanger</option>
@@ -49,6 +48,9 @@ ${vcf_file}
         <data format="tabular" name="output_variants" label="Output destination for variants"/>
   </outputs>
   <help><![CDATA[
-      TODO: Fill in help.
+      Second tool to be executed when using the PhyloWGS example. 
+      Extracts SSMs from a VCF file and formats CNVs from a CNV text file.
+      More information on this tool can be found at https://github.com/morrislab/phylowgs/tree/master/parser under create_phylowgs_inputs.py
+      Output of this tool will be used in PhyloWGS_Tool tool.
 ]]></help>
 </tool>

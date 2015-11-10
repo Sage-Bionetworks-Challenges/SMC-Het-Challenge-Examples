@@ -1,4 +1,4 @@
-<tool id="PhyloWGS_Format" name="PhyloWGS Format" version="0.1.0">
+<tool id="PhyloWGS_Submission_Format" name="PhyloWGS Submission Format" version="0.1.0">
   <stdio>
     <exit_code range="1:" />
   </stdio>
