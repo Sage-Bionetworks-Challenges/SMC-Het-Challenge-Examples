@@ -6,9 +6,9 @@
     <container type="docker">phylowgs:smchet1</container>
   </requirements>
   <command><![CDATA[
-python /opt/smchet-challenge/create-smchet-report/write_report.py
+PYTHONPATH='/opt/phylowgs/' python /opt/smchet-challenge/create-smchet-report/write_report.py
 ${tree_summary} ${mutations} ${mutation_assignments}
-${GALAXY_DATA_INDEX_DIR}
+.
 ]]></command>
     <inputs>
 		<param name="tree_summary" type="data" format="binary" label="Trees.json.gz"/>
