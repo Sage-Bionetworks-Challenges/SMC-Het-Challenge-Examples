@@ -11,13 +11,13 @@ ${TumourSample} ${trees}
 ${tree_summary} ${mutations} ${mutation_assignments}
 ]]></command>
     <inputs>
-		<param name="TumourSample" type="integer" label="Tumour Sample" help="ID of Tumour Sample used in the analysis"</param>
-		<param name="trees" type="data" format="text" label="Trees" help="Trees zip file from PhyloWGS Tool output"</param> 
+		<param name="TumourSample" type="integer" label="Tumour Sample" help="ID of Tumour Sample used in the analysis"/>
+		<param name="trees" type="data" type="data" format="binary" label="Trees" help="Trees zip file from PhyloWGS Tool output"/>
     </inputs>
     <outputs>
-		<data name="tree_summary" format="text" label="Trees.json.gz"</param>
-		<data name="mutations" format="text" label="mutations.json.gz"</param>
-		<data name="mutation_assignments" format="text" label="mutation_assignments.json.gz"</param>
+		<data name="tree_summary" format="binary" label="Trees.json.gz"/>
+		<data name="mutations" format="binary" label="mutations.json.gz"/>
+		<data name="mutation_assignments" format="binary" label="mutation_assignments.json.gz"/>
     </outputs>
     <help><![CDATA[
       TODO: Fill in help.
