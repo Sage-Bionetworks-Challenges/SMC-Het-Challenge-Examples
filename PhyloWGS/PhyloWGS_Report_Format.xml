@@ -12,7 +12,7 @@ ${tree_summary} ${mutations} ${mutation_assignments}
 ]]></command>
     <inputs>
 		<param name="TumourSample" type="integer" label="Tumour Sample" help="ID of Tumour Sample used in the analysis"/>
-		<param name="trees" type="data" type="data" format="binary" label="Trees" help="Trees zip file from PhyloWGS Tool output"/>
+		<param name="trees" type="data" format="binary" label="Trees" help="Trees zip file from PhyloWGS Tool output"/>
     </inputs>
     <outputs>
 		<data name="tree_summary" format="binary" label="Trees.json.gz"/>
