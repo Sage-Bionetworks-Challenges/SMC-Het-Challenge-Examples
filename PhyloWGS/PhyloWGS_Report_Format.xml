@@ -1,0 +1,26 @@
+<tool id="PhyloWGS_Report_Format" name="PhyloWGS Report Format" version="0.1.0">
+  <stdio>
+    <exit_code range="1:" />
+  </stdio>
+  <requirements>
+    <container type="docker">phylowgs:smchet1</container>
+  </requirements>
+  <command><![CDATA[
+python /opt/phylowgs/write_results.py 
+${TumourSample} ${trees} 
+${tree_summary} ${mutations} ${mutation_assignments}
+]]></command>
+    <inputs>
+		<param name="TumourSample" type="integer" label="Tumour Sample" help="Tumour Sample used in the analysis"</param>
+		<param name="trees" type="text" label="Trees" help="Trees zip file from PhyloWGS Tool output"</param> 
+    </inputs>
+    <outputs>
+		<data name="tree_summary" type="text" label="Trees.json.gz"</param>
+		<data name="mutations" type="text" label="mutations.json.gz"</param>
+		<data name="mutation_assignments" type="text" label="mutation_assignments.json.gz"</param>
+    </outputs>
+    <help><![CDATA[
+      TODO: Fill in help.
+      ]]></help>
+    </tool>
+    

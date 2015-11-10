@@ -48,9 +48,9 @@ ${vcf_file}
         <data format="tabular" name="output_variants" label="Output destination for variants"/>
   </outputs>
   <help><![CDATA[
-      Second tool to be executed when using the PhyloWGS example. 
-      Extracts SSMs from a VCF file and formats CNVs from a CNV text file.
-      More information on this tool can be found at https://github.com/morrislab/phylowgs/tree/master/parser under create_phylowgs_inputs.py
-      Output of this tool will be used in PhyloWGS_Tool tool.
+      * Second tool to be executed when using the PhyloWGS example. 
+      * Extracts SSMs from a VCF file and formats CNVs from a CNV text file.
+      * More information on this tool can be found at https://github.com/morrislab/phylowgs/tree/master/parser under create_phylowgs_inputs.py
+      * Output of this tool will be used in PhyloWGS_Tool tool.
 ]]></help>
 </tool>
