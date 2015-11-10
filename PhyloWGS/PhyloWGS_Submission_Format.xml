@@ -6,7 +6,7 @@
     <container type="docker">phylowgs:smchet1</container>
   </requirements>
   <command><![CDATA[
-python /opt/smc-het-challenge/write_report.py
+python /opt/smchet-challenge/write_report.py
 ${tree_summary} ${mutations} ${mutation_assignments}
 ${GALAXY_DATA_INDEX_DIR}
 ]]></command>
@@ -16,7 +16,13 @@ ${GALAXY_DATA_INDEX_DIR}
 		<param name="mutation_assignments" type="data" format="binary" label="mutation_assignments.json.gz"/>
     </inputs>
     <outputs>
-    	<data name="1A" type="text" label="1A.txt" from_work_dir="1A.txt"/>
+    	<data name="1A" format="text" label="1A.txt" from_work_dir="1A.txt"/>
+    	<data name="1B" format="text" label="1B.txt" from_work_dir="1B.txt"/>
+    	<data name="1C" format="text" label="1C.txt" from_work_dir="1C.txt"/>
+    	<data name="2A" format="text" label="2A.txt" from_work_dir="2A.txt"/>
+    	<data name="2B" format="binary" label="2B.txt.gz" from_work_dir="2B.txt.gz"/>
+    	<data name="3A" format="text" label="3A.txt" from_work_dir="3A.txt"/>
+    	<data name="3B" format="binary" label="3B.txt.gz" from_work_dir="3B.txt.gz"/>
     </outputs>
     <help><![CDATA[
       TODO: Fill in help.
