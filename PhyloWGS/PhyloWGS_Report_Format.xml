@@ -1,4 +1,4 @@
-<tool id="PhyloWGS_Report_Format" name="PhyloWGS Report Format" version="0.1.0">
+<tool id="PhyloWGS_Report_Format" name="PhyloWGS 4 - Report Format" version="0.1.0">
   <stdio>
     <exit_code range="1:" />
   </stdio>
@@ -19,8 +19,10 @@ ${tree_summary} ${mutations} ${mutation_assignments}
 		<data name="mutations" format="binary" label="mutations.json.gz"/>
 		<data name="mutation_assignments" format="binary" label="mutation_assignments.json.gz"/>
     </outputs>
-    <help><![CDATA[
-      TODO: Fill in help.
-      ]]></help>
+    <help><![CDATA[- Fourth tool to be executed when using the PhyloWGS example.]]>
+    &#xA;<![CDATA[- Formats PhyloWGS output into JSON files, that are easier to visualize]]>
+    &#xA;<![CDATA[- More information on this tool can be found at https://github.com/morrislab/phylowgs under write_results.py]]> 
+    &#xA;<![CDATA[- Output from this tool will be used in PhyloWGS - 5 Submission Format.]]>
+    </help>
     </tool>
     

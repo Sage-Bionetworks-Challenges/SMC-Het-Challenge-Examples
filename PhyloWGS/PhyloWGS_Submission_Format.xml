@@ -1,4 +1,4 @@
-<tool id="PhyloWGS_Submission_Format" name="PhyloWGS Submission Format" version="0.1.0">
+<tool id="PhyloWGS_Submission_Format" name="PhyloWGS 5 - Submission Format" version="0.1.0">
   <stdio>
     <exit_code range="1:" />
   </stdio>
@@ -24,8 +24,10 @@ ${tree_summary} ${mutations} ${mutation_assignments}
     	<data name="3A" format="text" label="3A.txt" from_work_dir="3A.txt"/>
     	<data name="3B" format="binary" label="3B.txt.gz" from_work_dir="3B.txt.gz"/>
     </outputs>
-    <help><![CDATA[
-      TODO: Fill in help.
-      ]]></help>
+    <help><![CDATA[- Final tool to be executed when using the PhyloWGS example.]]>
+    &#xA;<![CDATA[- Formats the JSON files into submission file for each of the SMC-Het Subchallenges]]>
+    &#xA;<![CDATA[- More information on this tool can be found at https://github.com/morrislab/smchet-challenge/create-smchet-report]]> 
+    &#xA;<![CDATA[- Output from this tool should be run through the evaluator tool]]>
+    </help>
     </tool>
     
