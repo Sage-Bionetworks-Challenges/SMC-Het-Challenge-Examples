@@ -1,8 +1,8 @@
 FROM ubuntu
 
 RUN apt-get update && apt-get install -y gfortran build-essential \
-make gcc build-essential python python-dev wget libgsl0ldbl \
-gsl-bin libgsl0-dev python-pip git \
+make gcc build-essential python python-dev wget libgsl2 libgsl-dev \
+gsl-bin python-pip git \
 libblas-dev liblapack-dev
 
 RUN pip install PyVCF
