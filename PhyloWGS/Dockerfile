@@ -12,6 +12,6 @@ RUN pip install numpy scipy
 WORKDIR /opt
 
 RUN git clone https://github.com/morrislab/smchet-challenge.git && cd smchet-challenge && git checkout master
-RUN git clone https://github.com/morrislab/phylowgs.git && cd phylowgs && git checkout amit-test 
+RUN git clone https://github.com/morrislab/phylowgs.git && cd phylowgs && git checkout master 
 
 RUN cd phylowgs && g++ -o mh.o -O3 mh.cpp  util.cpp `gsl-config --cflags --libs`
