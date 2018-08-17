@@ -1,11 +1,11 @@
 BATTEN=$1
 VCF=$2
+CELL=$3
+PUR=(`sed "2q;d" ${CELL}`)
 SNV_CALLER="mutect_smchet"
 CNV_CALLER="battenberg-smchet"
-CNV_CONFIDENCE=1
-READ_LENGTH=100
-MCMC=1
-BURNIN=1
+MCMC=5000
+BURNIN=2000
 NCHAINS=16
 RANDOM_SEED="`seq 1 ${NCHAINS}`"
 #TODO: Fix cellularity
@@ -18,7 +18,7 @@ RANDOM_SEED="`seq 1 ${NCHAINS}`"
 #--only-normal-cn 
 #end if
 
-python /opt/phylowgs/parser/parse_cnvs.py --cnv-format $CNV_CALLER --cellularity 1.0 --cnv-output cnvs.txt $BATTEN
+python /opt/phylowgs/parser/parse_cnvs.py --cnv-format $CNV_CALLER --cellularity $PUR --cnv-output cnvs.txt $BATTEN
 
 python /opt/phylowgs/parser/create_phylowgs_inputs.py --cnvs s1=cnvs.txt --output-cnvs cnv_data.txt --output-variants ssm_data.txt --vcf-type s1=$SNV_CALLER s1=$VCF
 python /opt/phylowgs/multievolve.py --num-chains $NCHAINS --ssms ssm_data.txt --cnvs cnv_data.txt --burnin-samples $BURNIN --mcmc-samples $MCMC -r $RANDOM_SEED
